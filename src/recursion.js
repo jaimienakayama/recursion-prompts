@@ -118,19 +118,28 @@ var sumBelow = function(n) {
 var range = function(x, y) {
 
   // edge case
-  if (y - x <= 1) {
+  if (y - x === 1 || y - x === 0) {
     return [];
   }
 
   var result = [];
 
-  // base case
-  if (y - x === 2) {
-    return [x + 1];
+  if (x < y) {
+    if (y - x === 2) {
+      return [x + 1];
+    } else {
+      var result = range(x, y - 1);
+      result.push(y - 1);
+      return result;
+    }
   } else {
-    var result = range(x, y - 1);
-    result.push(y - 1);
-    return result;
+    if (x - y === 2) {
+      return [x - 1];
+    } else {
+      var result = range(x, y + 1);
+      result.push(y + 1);
+      return result;
+    }
   }
 
 };
