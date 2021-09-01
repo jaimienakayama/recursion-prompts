@@ -116,6 +116,23 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+
+  // edge case
+  if (y - x <= 1) {
+    return [];
+  }
+
+  var result = [];
+
+  // base case
+  if (y - x === 2) {
+    return [x + 1];
+  } else {
+    var result = range(x, y - 1);
+    result.push(y - 1);
+    return result;
+  }
+
 };
 
 // 7. Compute the exponent of a number.
